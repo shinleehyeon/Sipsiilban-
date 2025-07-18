@@ -3,48 +3,33 @@ import { SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
 import { Button, Typo, VStack, HStack } from '@/components/atoms';
 import { ButtonVariant } from '@/components/atoms/Button/Button.type';
 import { useNavigation, useLocalSearchParams } from 'expo-router';
-import { client } from '@/api/axios';
 import { ArrowLeft, Store, User, Calendar, Package } from 'lucide-react-native';
 import { formatWon } from '@/utils/price';
 import { formatKoreanDate } from '@/utils/date';
-
-interface OrderDetail {
-    id: number;
-    orderer: string;
-    price: number;
-    date: Date;
-    storeName: string;
-    productName: string;
-    status: 'completed' | 'pending' | 'cancelled';
-}
+import { findOrderById, MockOrder } from '@/data/mockOrders';
 
 export default function OrderDetailPage() {
     const navigation = useNavigation();
     const params = useLocalSearchParams();
-    const [orderDetail, setOrderDetail] = useState<OrderDetail | null>(null);
+    const [orderDetail, setOrderDetail] = useState<MockOrder | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchOrderDetail = async () => {
+        const fetchOrderDetail = () => {
             try {
-                const orderId = params.id;
-                const response = await client.get(`/api/orders/${orderId}`);
-                setOrderDetail(response.data);
+                const orderId = Number(params.id);
+                const order = findOrderById(orderId);
+
+                if (order) {
+                    setOrderDetail(order);
+                } else {
+                    console.error('주문을 찾을 수 없습니다:', orderId);
+                }
             } catch (error) {
                 console.error(
                     '주문 상세 정보를 불러오는데 실패했습니다:',
                     error,
                 );
-                // 임시 데이터 (실제로는 에러 처리)
-                setOrderDetail({
-                    id: 1,
-                    orderer: '한유찬',
-                    price: 323232,
-                    date: new Date(),
-                    storeName: '스타벅스 강남점',
-                    productName: '아메리카노 외 3건',
-                    status: 'completed',
-                });
             } finally {
                 setLoading(false);
             }
@@ -167,6 +152,26 @@ export default function OrderDetailPage() {
                                     </Typo>
                                 </HStack>
                                 <Typo size={14}>{orderDetail.orderer}</Typo>
+                            </HStack>
+
+                            <HStack style={s.infoRow}>
+                                <HStack gap={8} style={s.infoLabel}>
+                                    <Store size={16} color="#6B7280" />
+                                    <Typo size={14} color="textSecondary">
+                                        매장
+                                    </Typo>
+                                </HStack>
+                                <Typo size={14}>{orderDetail.storeName}</Typo>
+                            </HStack>
+
+                            <HStack style={s.infoRow}>
+                                <HStack gap={8} style={s.infoLabel}>
+                                    <Package size={16} color="#6B7280" />
+                                    <Typo size={14} color="textSecondary">
+                                        상품
+                                    </Typo>
+                                </HStack>
+                                <Typo size={14}>{orderDetail.productName}</Typo>
                             </HStack>
 
                             <HStack style={s.infoRow}>

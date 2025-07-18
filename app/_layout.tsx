@@ -64,6 +64,10 @@ export default function RootLayout() {
                 <Stack.Screen name="order" options={{ headerShown: false }} />
                 <Stack.Screen name="payment" options={{ headerShown: false }} />
                 <Stack.Screen name="qr" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="callback"
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="+not-found" />
             </Stack>
             <StatusBar style="auto" />

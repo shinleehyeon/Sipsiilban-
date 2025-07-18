@@ -1,16 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import {
-    CameraView,
-    CameraType,
-    BarcodeScanningResult,
-    Camera,
-} from 'expo-camera';
+import { CameraView, BarcodeScanningResult, Camera } from 'expo-camera';
 import { Button, Typo, VStack, HStack } from '@/components/atoms';
-import { ButtonVariant } from '@/components/atoms/Button/Button.type';
 import { useNavigation, useLocalSearchParams } from 'expo-router';
-import { client } from '@/api/axios';
-import { ArrowLeft, RotateCcw } from 'lucide-react-native';
+import { RotateCcw } from 'lucide-react-native';
 import { formatWon } from '@/utils/price';
 
 export default function QRPage() {
@@ -39,45 +32,21 @@ export default function QRPage() {
         setScanned(true);
         setIsProcessing(true);
 
-        try {
-            // QR 코드 데이터와 결제 금액으로 API 요청
-            const response = await client.post('/api/qr-verify', {
-                qrData: data,
-                amount: amount,
-                timestamp: new Date().toISOString(),
-            });
-
-            if (response.data.success) {
-                Alert.alert(
-                    '결제 성공',
-                    `${formatWon(amount)} 결제가 완료되었습니다.`,
-                    [
-                        {
-                            text: '확인',
-                            onPress: () => {
-                                navigation.navigate('(tabs)' as never);
-                            },
-                        },
-                    ],
-                );
-            } else {
-                throw new Error('결제 실패');
-            }
-        } catch (error) {
+        // QR 인식 성공 시 바로 홈으로 이동
+        setTimeout(() => {
             Alert.alert(
-                '결제 실패',
-                '잘못된 QR 코드이거나 서버 오류가 발생했습니다.',
+                'QR 인식 성공',
+                `${formatWon(amount)} 결제가 완료되었습니다.`,
                 [
                     {
-                        text: '다시 시도',
+                        text: '확인',
                         onPress: () => {
-                            setScanned(false);
-                            setIsProcessing(false);
+                            navigation.navigate('(tabs)' as never);
                         },
                     },
                 ],
             );
-        }
+        }, 500); // 0.5초 후 알림 표시
     };
 
     const resetScanner = () => {
