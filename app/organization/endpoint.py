@@ -15,7 +15,7 @@ from app.core.credential import Credential, depends_credential, get_current_user
 from utils.env_validator import settings
 
 from app.user.entities import User
-from .service import OrganizationCredential
+
 
 router = APIRouter(prefix="/organization", tags=["Organization"])
 

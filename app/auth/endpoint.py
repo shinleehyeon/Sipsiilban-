@@ -252,7 +252,6 @@ class AuthEndpoint:
                 "customer_type": current_user.customer_type,
             },
         }
-
     @router.get("/callback", description="Google OAuth2.0 Callback (TEST ONLY)")
     async def google_callback(
         self,
@@ -266,3 +265,4 @@ class AuthEndpoint:
                 "redirect_url": request.url_for("AuthEndpoint.login_web"),
             },
         }
+

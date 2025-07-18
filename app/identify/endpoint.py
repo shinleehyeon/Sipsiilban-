@@ -14,12 +14,14 @@ import urllib.parse
 from app.core.credential import Credential, depends_credential, get_current_user
 from app.user.entities import User
 from utils.env_validator import settings
+from .service import IdentifyService
 
 from app.organization.entities import Organization
 from app.payment.entites import PaymentWallet
 
 router = APIRouter(prefix="/identify", tags=["Identify"])
 
+service = IdentifyService()
 
 @cbv(router)
 class IdentifyEndpoint:
@@ -67,4 +69,5 @@ class IdentifyEndpoint:
             raise HTTPException(status_code=500, detail="Failed to join organization")
 
     @router.get("/verify-organization")
-    async def verify(self, business_id: str, verify_type: int): ...
+    async def verify(self, business_id: str, verify_type: int):
+        return service.verify(business_id, verify_type)

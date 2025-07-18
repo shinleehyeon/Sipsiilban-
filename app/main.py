@@ -7,11 +7,14 @@ from utils.env_validator import settings
 
 from utils.logger import logger
 
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.auth.endpoint import router as auth_router
 from app.payment.endpoint import router as payment_router
 from app.user.endpoint import router as user_router
 from app.identify.endpoint import router as identify_router
 from app.merchant.endpoint import router as merchant_router
+from app.donate.endpoint import router as donation_router
 
 logger = logger("bootstrap")
 
@@ -51,6 +54,13 @@ def bootstrap() -> FastAPI:
         lifespan=lifespan,
         debug=settings.APP_ENV == "development",
     )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["http://localhost:3000"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     return app
 
 
@@ -64,3 +74,4 @@ server.include_router(user_router)
 server.include_router(identify_router)
 
 server.include_router(merchant_router)
+server.include_router(donation_router)
