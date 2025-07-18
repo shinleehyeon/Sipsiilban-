@@ -27,6 +27,7 @@ export default function Button({
     fullWidth,
     fullRadius,
     onPress,
+    style,
 }: ButtonProps) {
     const theme = useTheme();
     const { scaleAnim, handlePressIn, handlePressOut } = useButtonAnimation();
@@ -47,7 +48,10 @@ export default function Button({
             } as TextProps);
         } else if (typeof children === 'string') {
             return (
-                <Typo size={ButtonStyle.size.fontSize} color={ButtonStyle.color.color as VariantColorType}>
+                <Typo
+                    size={ButtonStyle.size.fontSize}
+                    style={{ color: ButtonStyle.color.color }}
+                >
                     {children}
                 </Typo>
             );
@@ -76,6 +80,7 @@ export default function Button({
                     fullWidth && s.fullWidth,
                     fullRadius && s.fullRadius,
                     { opacity: disabled ? 0.5 : 1 },
+                    style,
                 ]}
                 disabled={isPending || disabled}
                 onPress={handlePress}

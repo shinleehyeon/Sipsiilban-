@@ -1,8 +1,7 @@
-import { API_URL } from '@env'
 import axios from 'axios'
 
 export const client = axios.create({
-    baseURL: API_URL,
+    baseURL: 'http://localhost:3000',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

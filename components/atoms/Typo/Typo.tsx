@@ -24,7 +24,7 @@ export default function Typo(props: TypoProps) {
         textAlign,
         fontSize: size,
         fontWeight: weight,
-        color: Color[theme][color ?? 'text'],
+        color: color ? Color[theme][color] : Color[theme].text,
         ...style,
     };
 

@@ -1,4 +1,5 @@
 import { ComponentPropsFull, WithChildren } from '@/types/components';
+import { ViewStyle } from 'react-native';
 
 export enum ButtonVariant {
     BRAND = 'brand',
@@ -27,4 +28,5 @@ export interface ButtonProps
     size?: ButtonSize;
     isPending?: boolean;
     disabled?: boolean;
+    style?: ViewStyle;
 }

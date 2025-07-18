@@ -26,7 +26,7 @@ export default function Box({
         justifyContent: justify,
         alignItems: align,
         flexWrap: wrap,
-        gap,
+        gap: gap || undefined,
         width: fullWidth ? '100%' : undefined,
         height: fullHeight ? '100%' : undefined,
     };

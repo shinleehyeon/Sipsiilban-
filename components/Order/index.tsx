@@ -11,12 +11,14 @@ interface Props {
     id: number;
 }
 
-export default function Order({ orderer, price, date }: Props) {
-    const navigate = useNavigation()
+export default function Order({ orderer, price, date, id }: Props) {
+    const navigate = useNavigation();
     return (
-        <TouchableOpacity onPress={() => {
-            navigate.navigate('order')
-        }}>
+        <TouchableOpacity
+            onPress={() => {
+                navigate.navigate('order' as never, { id } as never);
+            }}
+        >
             <HStack style={s.container}>
                 <VStack gap={4}>
                     <Typo size={20}>{orderer}</Typo>

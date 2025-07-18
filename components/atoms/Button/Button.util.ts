@@ -30,32 +30,32 @@ export function getButtonColorByVariant(
         case ButtonVariant.BRAND:
             return {
                 backgroundColor: Color[theme].brand50,
-                color: 'white',
+                color: Color[theme].white,
             };
         case ButtonVariant.SECONDARY:
             return {
                 backgroundColor: Color[theme].gray20,
-                color: 'textSecondary',
+                color: Color[theme].textSecondary,
             };
         case ButtonVariant.DANGER:
             return {
                 backgroundColor: Color[theme].error50,
-                color: 'white',
+                color: Color[theme].white,
             };
         case ButtonVariant.SUCCESS:
             return {
                 backgroundColor: Color[theme].success50,
-                color: 'white',
+                color: Color[theme].white,
             };
         case ButtonVariant.WARNING:
             return {
                 backgroundColor: Color[theme].warning50,
-                color: 'black',
+                color: Color[theme].black,
             };
         case ButtonVariant.TEXT:
             return {
                 backgroundColor: 'transparent',
-                color: 'text',
+                color: Color[theme].text,
                 padding: 10,
                 borderRadius: 5,
             };

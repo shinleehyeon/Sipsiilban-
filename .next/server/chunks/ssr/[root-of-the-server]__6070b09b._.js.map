@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/firo/Desktop/pos/src/app/pos/page.tsx"],"sourcesContent":["import s from './page.module.scss'\n\nexport default function Shop() {\n    return (\n        <main className=\"layout\">\n            <h1>상품을 선택해주세요</h1>\n            <h2>안녕하세요 한유찬마사지입니다!</h2>\n        </main>\n    )\n}"],"names":[],"mappings":";;;;;AAEe,SAAS;IACpB,qBACI,8OAAC;QAAK,WAAU;;0BACZ,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;0BAAG;;;;;;;;;;;;AAGhB","debugId":null}}]
+}

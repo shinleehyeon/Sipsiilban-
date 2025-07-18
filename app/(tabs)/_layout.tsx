@@ -8,9 +8,11 @@ export default function TabLayout() {
                 tabBarStyle: {
                     display: 'none',
                 },
+
             }}
         >
             <Tabs.Screen name="index" />
+            <Tabs.Screen name="qr/index" />
         </Tabs>
     );
 }

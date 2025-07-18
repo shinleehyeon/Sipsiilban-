@@ -10,6 +10,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { View } from 'react-native';
 import 'react-native-reanimated';
 
 const CustomDefaultTheme = {
@@ -60,6 +61,9 @@ export default function RootLayout() {
         >
             <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="order" options={{ headerShown: false }} />
+                <Stack.Screen name="payment" options={{ headerShown: false }} />
+                <Stack.Screen name="qr" options={{ headerShown: false }} />
                 <Stack.Screen name="+not-found" />
             </Stack>
             <StatusBar style="auto" />
