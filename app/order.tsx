@@ -171,26 +171,6 @@ export default function OrderDetailPage() {
 
                             <HStack style={s.infoRow}>
                                 <HStack gap={8} style={s.infoLabel}>
-                                    <Store size={16} color="#6B7280" />
-                                    <Typo size={14} color="textSecondary">
-                                        가맹점
-                                    </Typo>
-                                </HStack>
-                                <Typo size={14}>{orderDetail.storeName}</Typo>
-                            </HStack>
-
-                            <HStack style={s.infoRow}>
-                                <HStack gap={8} style={s.infoLabel}>
-                                    <Package size={16} color="#6B7280" />
-                                    <Typo size={14} color="textSecondary">
-                                        상품
-                                    </Typo>
-                                </HStack>
-                                <Typo size={14}>{orderDetail.productName}</Typo>
-                            </HStack>
-
-                            <HStack style={s.infoRow}>
-                                <HStack gap={8} style={s.infoLabel}>
                                     <Calendar size={16} color="#6B7280" />
                                     <Typo size={14} color="textSecondary">
                                         주문일시
