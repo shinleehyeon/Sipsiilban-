@@ -39,4 +39,6 @@ COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/pytho
 
 COPY . /app
 
+EXPOSE 8080
+
 CMD ["uv", "run", "python", "-m", "app"]
