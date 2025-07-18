@@ -1,124 +1,51 @@
-import {
-    Badge,
-    BadgeSize,
-    BadgeVariant,
-    Button,
-    ButtonVariant,
-    HStack,
-    Input,
-    Label,
-    Skeleton,
-    Typo,
-    TypoWeight,
-    VStack,
-} from '@/components/atoms';
-import { Icon } from '@/components/icon/glyph';
-import {
-    MediaPreviewHeader,
-    NavBar,
-    Segment,
-    SocialLogin,
-    SocialLoginBrand,
-    TitleHeader,
-} from '@/components/molecules';
+import { Button, HStack, Typo, VStack } from '@/components/atoms';
+import { Color } from '@/constants/color';
+import { useTheme } from '@/hooks/useTheme';
 import React, { useState } from 'react';
-import { Text, SafeAreaView } from 'react-native';
-import { DatePicker } from '@/components/organisms';
-
-import Dummy from '@/assets/images/dummy/cat.jpg';
+import { Text, SafeAreaView, Image } from 'react-native';
+import Logo from '@/assets/images/icon.png';
+import Order from '@/components/Order';
+import { ScanQrCode } from 'lucide-react-native';
+import { useNavigation } from 'expo-router';
 
 export default function HomeScreen() {
-    const options = [
-        { label: 'Daily', value: 'daily' },
-        { label: 'Weekly', value: 'weekly' },
-        { label: 'Monthly', value: 'monthly' },
-    ];
-    const [selected, setSelected] = useState('daily');
-    const [date, setDate] = useState(new Date());
-
+    const theme = useTheme();
+    const navigate = useNavigation()
     return (
         <>
-            <MediaPreviewHeader imageSource={Dummy} />
-            <SafeAreaView style={{ paddingTop: 40 }}>
-                <TitleHeader showBackButton backButtonText="프로필">
-                    안녕하세요
-                </TitleHeader>
-                <HStack style={{ padding: 20 }}>
-                    <VStack>
-                        <Button
-                            variant={ButtonVariant.BRAND}
-                            onPress={() => {}}
-                        >
-                            저장s하기
-                        </Button>
-                        <Button
-                            variant={ButtonVariant.SUCCESS}
-                            onPress={() => {}}
-                        >
-                            저장하기
-                        </Button>
-                        <Button
-                            variant={ButtonVariant.SECONDARY}
-                            onPress={() => {}}
-                        >
-                            <Text>저장s하기</Text>
-                        </Button>
-                        <Text style={{ fontFamily: 'PretendardBold' }}>
-                            저장s하기
-                        </Text>
-                        <Typo>저장s하기</Typo>
-                    </VStack>
-                    <Typo size={32} weight={TypoWeight.Bold}>
-                        아이이
-                    </Typo>
-                    <Badge
-                        variant={BadgeVariant.WARNING}
-                        size={BadgeSize.LARGE}
-                    >
-                        준비 안됨
-                    </Badge>
-                    <Label essential>앙기모찌</Label>
-                    <Input
-                        placeholder="아이디"
-                        onChange={() => {}}
-                        leadingIcon={<Icon.asterisk />}
-                    />
-                    <HStack gap={10}>
-                        <SocialLogin
-                            brand={SocialLoginBrand.GOOGLE}
-                            onPress={() => {}}
-                            border
-                        />
-                        <SocialLogin
-                            brand={SocialLoginBrand.APPLE}
-                            onPress={() => {}}
-                        />
-                    </HStack>
-                    <Skeleton width={200} height={24} />
-                    <Skeleton width={40} height={40} />
-                </HStack>
-                <Segment
-                    options={options}
-                    value={selected}
-                    onChange={setSelected}
-                />
-            </SafeAreaView>
-            <DatePicker
-                value={date}
-                onChange={(event, date) => {
-                    console.log('index.tsx', { event, date });
+            <SafeAreaView
+                style={{
+                    paddingTop: 40,
+                    marginInline: 20,
+                    display: 'flex',
+                    gap: 32,
                 }}
-                minimumDate={new Date(2020, 0, 1)}
-                maximumDate={new Date(2100, 11, 31)}
-            />
-            <NavBar>
-                <NavBar.Item icon={<Icon.asterisk />} selected screenName="..">
-                    홈
-                </NavBar.Item>
-                <NavBar.Item selected={false} screenName="..">
-                    홈
-                </NavBar.Item>
-            </NavBar>
+            >
+                <VStack>
+                    <Image source={Logo} style={{ width: 40, height: 40 }} />
+                </VStack>
+                <VStack gap={4}>
+                    <Typo size={16} color={'textSecondary'}>
+                        당일 정산 금액
+                    </Typo>
+                    <Typo size={32} weight={600}>
+                        199,290원
+                    </Typo>
+                </VStack>
+                <Button onPress={() => {
+                    navigate.navigate('qr')
+                }}>
+                    <HStack bgColor='brand50' gap={6} style={{display: 'flex', alignItems: 'center'}}>
+                        <ScanQrCode color={'#fff'} /> <Typo color='textInverse'>QR 코드 리더기 열기</Typo>
+                    </HStack>
+                </Button>
+                <VStack gap={12}>
+                    <Typo size={16} color={'textSecondary'}>
+                        주문 내역
+                    </Typo>
+                    <Order orderer="한유찬" price={323232} date={new Date()} />
+                </VStack>
+            </SafeAreaView>
         </>
     );
 }

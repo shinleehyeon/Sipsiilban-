@@ -3,7 +3,7 @@ import { BoxProps } from '../Box/Box.type';
 
 export default function VStack({ children, ...restProps }: BoxProps) {
     return (
-        <Box direction="row" {...restProps}>
+        <Box direction="column" {...restProps}>
             {children}
         </Box>
     );
