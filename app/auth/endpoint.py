@@ -114,6 +114,7 @@ class AuthEndpoint:
                 name=userinfo.get("name", ""),
                 email=userinfo["email"],
                 customer_type=customer_type,
+                verified=True if customer_type == "sponsor" else False,
             )
         access_token_expires = timedelta(days=10)
         access_token = self.credential.create_access_token(

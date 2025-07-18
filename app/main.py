@@ -8,6 +8,10 @@ from utils.env_validator import settings
 from utils.logger import logger
 
 from app.auth.endpoint import router as auth_router
+from app.payment.endpoint import router as payment_router
+from app.user.endpoint import router as user_router
+from app.identify.endpoint import router as identify_router
+from app.merchant.endpoint import router as merchant_router
 
 logger = logger("bootstrap")
 
@@ -21,6 +25,9 @@ def bootstrap() -> FastAPI:
             app_modules={
                 "models": [
                     "app.user.entities",
+                    "app.payment.entites",
+                    "app.organization.entities",
+                    "app.merchant.entities",
                 ]
             },
             testing=settings.APP_ENV == "development",
@@ -50,3 +57,10 @@ def bootstrap() -> FastAPI:
 server = bootstrap()
 
 server.include_router(auth_router)
+server.include_router(payment_router)
+
+server.include_router(user_router)
+
+server.include_router(identify_router)
+
+server.include_router(merchant_router)

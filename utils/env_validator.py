@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     GOOGLE_WEB_CLIENT_SECRET: str
     REDIS_URI: str
 
+    PAYMENT_SESSION_EXPIRY: int = 240  # 4분
+
     @staticmethod
     @field_validator("SERVER_PORT")
     def check_port_range(value: int):
