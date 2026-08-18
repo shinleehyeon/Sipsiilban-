@@ -1,0 +1,57 @@
+import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+from utils.env_validator import settings
+
+log_format = (
+    "%(asctime)s - %(name)s - %(levelname)s - %(message)s " "(%(filename)s:%(lineno)d)"
+)
+
+__all__ = ["logger"]
+
+
+def logger(name):
+    logger_controller = logging.getLogger(name)
+
+    env = settings.APP_ENV.lower()
+
+    if env == "development" or env == "testing":
+        logger_controller.setLevel(logging.DEBUG)
+
+        log_dir = "logs"
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        file_handler = RotatingFileHandler(
+            os.path.join(log_dir, f"{name}.log"),
+            maxBytes=1024 * 1024 * 5,
+            backupCount=5,
+        )
+        file_handler.setLevel(logging.DEBUG)
+
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.DEBUG)
+
+        formatter = logging.Formatter(log_format)
+        file_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)
+
+        # 핸들러 추가
+        logger_controller.addHandler(file_handler)
+        logger_controller.addHandler(console_handler)
+
+    elif env == "production":
+        logger_controller.setLevel(logging.INFO)
+
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+
+        formatter = logging.Formatter(log_format)
+        console_handler.setFormatter(formatter)
+
+        logger_controller.addHandler(console_handler)
+
+    else:
+        raise ValueError(f"Unknown environment: {env}")
+
+    return logger_controller

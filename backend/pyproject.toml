@@ -1,0 +1,22 @@
+[project]
+name = "sunrinthon-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.12.14",
+    "fastapi>=0.116.1",
+    "fastapi-restful>=0.6.0",
+    "lxml>=6.0.0",
+    "passlib>=1.7.4",
+    "pydantic>=2.11.7",
+    "pydantic-settings>=2.10.1",
+    "pyjwt>=2.10.1",
+    "redis[hiredis]>=6.2.0",
+    "requests>=2.32.4",
+    "tortoise-orm[asyncpg]>=0.25.1",
+    "typing-inspect>=0.9.0",
+    "uvicorn>=0.35.0",
+    "vonage>=4.4.3",
+]
