@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/app/pos/Users/firo/Desktop/pos/src/app/pos/page.module.scss"],"sourcesContent":[".description {\n    font-weight: 400;\n    color: #888888;\n    font-size: 20px;\n}\n.item {\n    width: 50%;\n    background-color: #ededed;\n\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n\n\n    border-radius: 16px;\n\n    img {\n        width: 150px;\n    }\n}"],"names":[],"mappings":"AAAA;;;;;;AAKA;;;;;;;;;AAWI","debugId":null}}]
-}

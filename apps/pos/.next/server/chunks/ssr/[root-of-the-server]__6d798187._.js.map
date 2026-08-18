@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/pos/page.module.scss.module.css [app-rsc] (css module)"],"sourcesContent":["__turbopack_context__.v({\n  \"description\": \"page-module-scss-module__FFA3eG__description\",\n  \"item\": \"page-module-scss-module__FFA3eG__item\",\n});\n"],"names":[],"mappings":"AAAA;AACA;AACA;AACA"}},
-    {"offset": {"line": 25, "column": 0}, "map": {"version":3,"sources":["file:///Users/firo/Desktop/pos/src/app/pos/page.tsx"],"sourcesContent":["import s from './page.module.scss'\n\nexport default function Shop() {\n    return (\n        <main className=\"layout\">\n            <h1>상품을 선택해주세요</h1>\n            <h2 className={s.description}>안녕하세요 한유찬마사지입니다!</h2>\n\n            <div>\n                <div className={s.item}>\n                    <img src={'https://ecudemo129419.cafe24.com/web/product/big/201907/233f19b4479210342eef796975bb9d31.png'}></img>\n                    <span>아메리카노</span>\n                </div>\n            </div>\n        </main>\n    )\n}"],"names":[],"mappings":";;;;AAAA;;;AAEe,SAAS;IACpB,qBACI,8OAAC;QAAK,WAAU;;0BACZ,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;gBAAG,WAAW,uJAAA,CAAA,UAAC,CAAC,WAAW;0BAAE;;;;;;0BAE9B,8OAAC;0BACG,cAAA,8OAAC;oBAAI,WAAW,uJAAA,CAAA,UAAC,CAAC,IAAI;;sCAClB,8OAAC;4BAAI,KAAK;;;;;;sCACV,8OAAC;sCAAK;;;;;;;;;;;;;;;;;;;;;;;AAK1B","debugId":null}}]
-}
