@@ -68,7 +68,7 @@ export default function ProfileScreen() {
             <CreditCard size={20} color="#ffffff" />
             <Text style={styles.balanceLabel}>현재 사용 가능 금액</Text>
           </View>
-          <Text style={styles.balanceAmount}>19,990원</Text>
+          <Text style={styles.balanceAmount}>16,990원</Text>
         </View>
 
         <View style={styles.menuSection}>

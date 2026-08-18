@@ -73,7 +73,7 @@ export default function HomeScreen({ onPaymentPress, onSearchPress, onStorePress
             <CreditCard size={20} color="#ffffff" />
             <Text style={styles.amountLabel}>현재 사용 가능 금액</Text>
           </View>
-          <Text style={styles.amountValue}>19,990원</Text>
+          <Text style={styles.amountValue}>16,990원</Text>
         </View>
 
         <View style={styles.searchSection}>
