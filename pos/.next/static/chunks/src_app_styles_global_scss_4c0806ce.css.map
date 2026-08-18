@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 2, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/app/styles/Users/firo/Desktop/pos/src/app/styles/global.scss"],"sourcesContent":["@import url(\"https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css\");\n\nbody, html {\n    margin: 0;\n    padding: 0;\n}\n\n * {\n    box-sizing: border-box;\n    font-family: 'Pretendard';\n }\n\n .layout {\n    padding: 20px;\n }"],"names":[],"mappings":"AAEA;;;;;AAKC;;;;;AAKA","debugId":null}}]
+}
